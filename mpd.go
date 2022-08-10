@@ -9,7 +9,7 @@ import (
 	"regexp"
 	"strconv"
 
-	copyobj "github.com/mc2soft/mpd/utils"
+	copyobj "github.com/Avi-Lance/mpd/utils"
 )
 
 // http://mpeg.chiariglione.org/standards/mpeg-dash
@@ -151,6 +151,8 @@ type Period struct {
 	ID             *string          `xml:"id,attr"`
 	Duration       *string          `xml:"duration,attr"`
 	AdaptationSets []*AdaptationSet `xml:"AdaptationSet,omitempty"`
+	BaseURL                    *string  `xml:"BaseURL,omitempty"`
+	SegmentTemplate    *SegmentTemplate `xml:"SegmentTemplate,omitempty"`
 }
 
 // Period represents XSD's PeriodType.
@@ -173,6 +175,8 @@ type AdaptationSet struct {
 	ContentProtections      []DRMDescriptor  `xml:"ContentProtection,omitempty"`
 	Representations         []Representation `xml:"Representation,omitempty"`
 	Codecs                  *string          `xml:"codecs,attr"`
+	BaseURL                    *string  `xml:"BaseURL,omitempty"`
+	SegmentTemplate    *SegmentTemplate `xml:"SegmentTemplate,omitempty"`
 }
 
 type adaptationSetMarshal struct {
